@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import NavBar from './components/NavBar/NavBar'
+import Login from './components/Login/Login'
 import './App.css';
+import Home from './components/Home/Home';
+import InventoryList from './components/InventoryList/InventoryList';
+import { Route,Switch} from 'react-router-dom';
+import { get } from './services';
 
 function App() {
+
+  useEffect(()=>{
+    //get("customers");
+  },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+<>
+    <NavBar/>
+    <Switch>
+      <Route path='/login' component={Login}/>
+      <Route path='/home' component={Home}/>
+      <Route path='/lists' component={InventoryList}/>
+    </Switch>
+</>
+)
 }
 
 export default App;

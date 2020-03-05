@@ -1,0 +1,22 @@
+#home-title{
+    text-transform: uppercase;
+    color: rgb(255, 208, 0);
+}
+h3{
+    text-transform: capitalize;
+    margin-top: 20px;
+}
+img{
+    width: 200px;
+    display: block;
+    margin: auto;
+}
+button{
+    width: 150px;
+    border-radius: 500px !important;
+}
+.row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

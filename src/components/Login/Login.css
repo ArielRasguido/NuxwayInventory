@@ -1,0 +1,16 @@
+.container{
+    margin-top: 30px; 
+}
+#imagenCompany{
+    width: 60%;
+    display: block;
+    margin: auto;
+}
+
+#loginForm{
+    padding: 50px;
+    padding-left: 0px;
+}
+input{
+    max-width: 350px;
+}
