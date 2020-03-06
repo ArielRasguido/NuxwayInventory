@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import InventoryList from './components/InventoryList/InventoryList';
 import { Route,Switch} from 'react-router-dom';
 import { get } from './services';
+import Footer from './components/Footer/Footer'
 
 function App() {
 
@@ -15,11 +16,11 @@ function App() {
   return (
 <>
     <NavBar/>
-    <Switch>
-      <Route path='/login' component={Login}/>
-      <Route path='/home' component={Home}/>
-      <Route path='/lists' component={InventoryList}/>
-    </Switch>
+      <Switch>
+        <Route path='/login' component={Login}/>
+        <Route path='/home' component={Home}/>
+        <Route path='/lists' component={InventoryList}/>
+      </Switch>
 </>
 )
 }

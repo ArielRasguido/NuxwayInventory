@@ -1,0 +1,38 @@
+
+
+/**--------------FOOTER------------------**/
+
+.card-footer {
+    margin-top: 175px;
+    padding-bottom: 15px;
+    background-color: #ececec;
+    border-top: 0;
+}
+
+.card-footer div.row {
+    margin-bottom: 35px;
+}
+
+#condiciones {
+    text-align: center;
+}
+
+#privacidad,
+#condiciones {
+    line-height: 2;
+}
+
+#copy {
+    text-decoration: none;
+    color: rgb(187, 187, 187);
+    font-size: 1.3em;
+}
+
+
+
+hr {
+    border-color: gray;
+}
+
+
+/**-------------END FOOTER-----------------**/

@@ -7,12 +7,12 @@ const Home = ()=>{
     return(
         <div className="container">
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-sm-12 col-md-6">
                 <h1 id="home-title">Bienvenido</h1>
                 <p>Bienvenido al inventario de equipos de Nuxway, en la parte derecha selecione la acción que desea realizar.</p>
                 <small>(Porfavor sea cuidadoso con el manejo de la información)</small>
                 </div>
-                <div className="col-md-6">
+                <div className="col-sm-12 col-md-6">
                     <div className="row">
                         <div className="col-md-6">
                             <Subview type={"clientes"}/>
