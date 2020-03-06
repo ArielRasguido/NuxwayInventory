@@ -1,3 +1,7 @@
+#home{
+    margin-top: 100px;
+}
+
 #home-title{
     text-transform: uppercase;
     color: rgb(255, 208, 0);
@@ -11,14 +15,18 @@ img{
     display: block;
     margin: auto;
 }
-button{
+/* button{
     width: 150px;
     border-radius: 500px !important;
-}
+} */
 .row{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#subviewButton{
+    width: 150px;
+    border-radius: 500px !important;
 }
 
 @media(max-width:769px){
@@ -26,4 +34,9 @@ button{
         width: 30%;
         float: left;
     }
+    #home{
+        margin-top: 30px;
+    }
+    
+
 }

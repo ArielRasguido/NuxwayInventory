@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import './InventoryList.css'
 import { get, post } from '../../services';
 import GenericModal from '../Modals/GenericModal';
-import CreateClient from '../CreateClient/CreateClient';
+import CreateClient from '../CreateForms/CreateClient';
 
 const InventoryList=(props)=>{
 
@@ -11,7 +11,7 @@ const InventoryList=(props)=>{
             <div className="row">
                 <div className="col-md-6">
                     <h2>{props.title}</h2>
-                    <button onClick={props.setModal}>{props.title}</button>
+                    <button className="btn btn-dark" id="register" onClick={props.setModal}>Registrar</button>
                 </div>
                 <div className="col-md-6">
                 </div>

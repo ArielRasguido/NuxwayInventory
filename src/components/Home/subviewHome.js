@@ -1,5 +1,6 @@
 import React from 'react';
 import './Home.css';
+import {Link} from 'react-router-dom'
 
 const Subview = (props)=>{
     return(
@@ -7,7 +8,8 @@ const Subview = (props)=>{
             <img src={require(`../../assets/${props.type}.png`)} alt="subview-title"/>
             <h3 className="text-center">{props.type}</h3>
             <p className="text-center">Ver lista de {props.type}</p>
-            <button className="btn btn-warning d-block mx-auto">Ver</button>
+         
+            <Link id="subviewButton" className="btn btn-warning d-block mx-auto" to={props.path}>Ver</Link>
         </div>
     );
 

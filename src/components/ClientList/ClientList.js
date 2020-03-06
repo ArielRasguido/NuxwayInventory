@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import InventoryList from '../InventoryList/InventoryList'
 import { get, post } from '../../services';
 import GenericModal from '../Modals/GenericModal';
-import CreateClient from '../CreateClient/CreateClient';
+import CreateClient from '../CreateForms/CreateClient';
 
 const ClientList=(props)=>{
 
