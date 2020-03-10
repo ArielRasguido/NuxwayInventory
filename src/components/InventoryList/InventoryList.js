@@ -17,6 +17,9 @@ const InventoryList=(props)=>{
                 </div>
             </div>
             <hr/>
+              <div className="card row">
+                     Summary Report
+              </div>
             <div className="row">
                 <form className="form-inline my-2 my-lg-0">
                     <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
@@ -24,7 +27,7 @@ const InventoryList=(props)=>{
                 </form>
             </div>
             <div className="row">
-                <table className="table table-bordered">
+                <table className="table">
                     {props.children}
                 </table>
             </div>

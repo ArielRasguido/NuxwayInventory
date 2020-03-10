@@ -21,36 +21,40 @@ const ProductList=(props)=>{
 
     return(
         <>
+        <div>
+        </div>
            <InventoryList setModal={() => setModalShow(true)} title={props.title}>
                 <thead className="thead-light">
                          <tr>
-                         <th>ID</th> 
-                         <th>Equipo</th>
-                         <th>Modelo</th> 
-                         <th>Marca</th> 
-                         <th>Numero de serial</th>  
-                         <th>Fecha de ingreso</th>
-                         <th>Fecha de salida</th>
-                         <th>Estado</th>
-                         <th>Ubicacion</th>
-                         <th>ID de cliente</th>
-                         <th>Observaciones</th>
-                         </tr>   
+                            {/* <th>ID</th> */}
+                            <th>Equipo</th>
+                            <th>Modelo</th> 
+                            <th>Marca</th> 
+                            <th>Numero de serial</th>
+                            <th>Estado</th>
+                            {/* <th>Fecha de ingreso</th>
+                            <th>Fecha de salida</th>
+                            <th>Estado</th>
+                            <th>Ubicacion</th>
+                            <th>ID de cliente</th>
+                            <th>Observaciones</th> */}
+                         </tr>
                      </thead>
                      <tbody>
                          {list.map((listElement)=>
                          <tr key={listElement.id}>
-                             <td> {listElement.id}</td>
+                             {/* <td> {listElement.id}</td> */}
                              <td> {listElement.equipment}</td>
                              <td> {listElement.model}</td>
                              <td> {listElement.brand}</td>
                              <td> {listElement.serial_Number}</td>
-                             <td> {listElement.entry_Warehouse}</td>
+                             <td> {listElement.status}</td>
+                             {/* <td> {listElement.entry_Warehouse}</td>
                              <td> {listElement.out_Warehouse}</td>
                              <td> {listElement.status}</td>
                              <td> {listElement.location}</td>
                              <td> {listElement.customer_ID}</td>
-                             <td> {listElement.observations}</td>
+                             <td> {listElement.observations}</td> */}
                          </tr>
                          )}
                      </tbody>

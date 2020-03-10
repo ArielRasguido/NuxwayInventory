@@ -24,7 +24,8 @@ const ClientList=(props)=>{
            <InventoryList setModal={() => setModalShow(true)} title={props.title}>
                 <thead className="thead-light">
                          <tr>
-                         <th>ID</th> 
+                         <th>Editar</th>
+                         {/* <th>ID</th>  */}
                          <th>Nombre Completo</th> 
                          <th>Compañia</th> 
                          <th>Email</th>  
@@ -36,7 +37,8 @@ const ClientList=(props)=>{
                      <tbody>
                          {list.map((listElement)=>
                          <tr key={listElement.id}>
-                             <td> {listElement.id}</td>
+                             <td><button onClick={() => setModalShow(true)} id="edit-button"><img id="edit" src={require('../../assets/pencil-edit-button.svg')}/></button></td>
+                             {/* <td> {listElement.id}</td> */}
                              <td> {listElement.fullName}</td>
                              <td> {listElement.company}</td>
                              <td> {listElement.mail}</td>

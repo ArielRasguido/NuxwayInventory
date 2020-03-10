@@ -8,6 +8,7 @@ import { Route,Switch} from 'react-router-dom';
 import { get } from './services';
 import ClientList from './components/ClientList/ClientList';
 import ProductList from './components/ProductList/ProductList';
+import MaterialTableDemo from './components/ClientList/NewList';
 function App() {
 
   useEffect(()=>{
