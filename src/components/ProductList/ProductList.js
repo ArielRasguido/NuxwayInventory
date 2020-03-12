@@ -32,8 +32,8 @@ const ProductList=(props)=>{
                             <th>Marca</th> 
                             <th>Numero de serial</th>
                             
-                            <th>Fecha de ingreso</th>
-                            <th>Fecha de salida</th>
+                            <th>Ingreso</th>
+                            <th>Salida</th>
                             {/* <th>Estado</th> */}
                             <th>Ubicacion</th>
                             {/* <th>ID de cliente</th> */}
@@ -48,8 +48,8 @@ const ProductList=(props)=>{
                              <td> {listElement.model}</td>
                              <td> {listElement.brand}</td>
                              <td> {listElement.serial_Number}</td>
-                             <td> {listElement.entry_Warehouse}</td>
-                             <td> {listElement.out_Warehouse}</td>
+                             <td> {new Date(listElement.entry_Warehouse).toLocaleDateString()}</td>
+                             <td> {new Date(listElement.out_Warehouse).toLocaleDateString()}</td>
                              {/* <td> {listElement.status}</td> */}
                              <td> {listElement.location}</td>
                              {/* <td> {listElement.customer_ID}</td> */}

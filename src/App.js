@@ -3,12 +3,9 @@ import NavBar from './components/NavBar/NavBar'
 import Login from './components/Login/Login'
 import './App.css';
 import Home from './components/Home/Home';
-import InventoryList from './components/InventoryList/InventoryList';
 import { Route,Switch} from 'react-router-dom';
-import { get } from './services';
 import ClientList from './components/ClientList/ClientList';
 import ProductList from './components/ProductList/ProductList';
-import MaterialTableDemo from './components/ClientList/NewList';
 function App() {
 
   useEffect(()=>{
@@ -19,7 +16,7 @@ function App() {
     <NavBar/>
     <Switch>
       <Route path='/login' component={Login}/>
-      <Route path='/home' component={Home}/>
+      <Route exact path='/' component={Home}/>
       <Route path="/Clientlist" render={()=>(<ClientList title="Clientes"/>)}/>
       <Route path="/Productlist" render={()=>(<ProductList title="Productos"/>)}/>
     </Switch>

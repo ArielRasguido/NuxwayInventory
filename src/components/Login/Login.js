@@ -7,7 +7,7 @@ const Login = ()=>{
         <div className="container">
             <div className="row">
                 <div className="col-md-6">
-                    <img id="imagenCompany" src={require('../../assets/images.png')} />
+                    <img id="imagenCompany" src={require('../../assets/images.png')} alt="Logo-nuxway" />
                 </div>
                 <div className="col-md-6">
                     <form id="loginForm">

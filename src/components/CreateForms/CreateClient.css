@@ -5,3 +5,8 @@
 .registerbuttons{
     margin: 10px;
 }
+#loading{
+    position: absolute;
+    top:35%;
+    left: 45%;
+}

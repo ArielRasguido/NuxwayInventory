@@ -1,5 +1,4 @@
-import React, { useState, useReducer } from 'react'
-import { post } from '../../services';
+import React from 'react'
 import Create from './Create';
 
 const CreateProduct=()=>{
@@ -17,7 +16,7 @@ const CreateProduct=()=>{
                 observations:''
         }
 
-        const [client,setClient] = useState([
+        const client = [
           {
             label:'Equipo',
             placeholder:'Tipo de producto',
@@ -68,7 +67,7 @@ const CreateProduct=()=>{
             placeholder:'Observaciones del producto',
             name:'observations'
           }
-      ]);
+      ];
 
     return(<Create user={data} client={client} path={"products"}/>)
 
