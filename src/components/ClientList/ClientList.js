@@ -5,7 +5,7 @@ import GenericModal from '../Modals/GenericModal';
 import CreateClient from '../CreateForms/CreateClient';
 
 const ClientList=(props)=>{
-
+    const [selectedUSer,setSelectedUSer] = useState('');
     const [list,setList] = useState([]);
     const [modalShow, setModalShow] = React.useState(false);
 
@@ -37,7 +37,7 @@ const ClientList=(props)=>{
                      <tbody>
                          {list.map((listElement)=>
                          <tr key={listElement.id}>
-                             <td><button onClick={() => setModalShow(true)} id="edit-button"><img id="edit" src={require('../../assets/pencil-edit-button.svg')}/></button></td>
+                             <td><button onClick={() => {setModalShow(true); setSelectedUSer(listElement.id)}} id="edit-button"><img id="edit" src={require('../../assets/pencil-edit-button.svg')}/></button></td>
                              {/* <td> {listElement.id}</td> */}
                              <td> {listElement.fullName}</td>
                              <td> {listElement.company}</td>
@@ -54,7 +54,7 @@ const ClientList=(props)=>{
              onHide={() => setModalShow(false)}
              title="Registrar Cliente"
             >
-                <CreateClient/>
+                <CreateClient edit={true} selectedUSer={selectedUSer} onHide={() => setModalShow(false)}/>
 
             </GenericModal>
         </>

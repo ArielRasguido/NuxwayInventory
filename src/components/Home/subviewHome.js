@@ -6,10 +6,11 @@ const Subview = (props)=>{
     return(
         <div>
             <img src={require(`../../assets/${props.type}.png`)} alt="subview-title"/>
+            <div id="subview">
             <h3 className="text-center">{props.type}</h3>
-            <p className="text-center">Ver lista de {props.type}</p>
-         
-            <Link id="subviewButton" className="btn btn-warning d-block mx-auto" to={props.path}>Ver</Link>
+                <p className="text-center">Ver lista de {props.type}</p>
+                <Link id="subviewButton" className="btn btn-warning d-block mx-auto" to={props.path}>Ver</Link>
+            </div>          
         </div>
     );
 

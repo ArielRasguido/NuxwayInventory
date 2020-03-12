@@ -45,7 +45,7 @@ const CreateClient=(props)=>{
           }
       ]);
     return(
-          <Create user={data} client={client} path={"customers"}/>
+          <Create onHide={props.onHide} selectedUSer={props.selectedUSer} edit={props.edit} user={data} client={client} path={"customers"}/>
     )
 }
 export default CreateClient

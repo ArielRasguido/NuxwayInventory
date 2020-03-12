@@ -28,4 +28,17 @@ h2{
     background-color: rgb(240, 240, 240);
 }
 
+.card-body span{
+    font-weight: bold;
+    color: rgb(126, 126, 126);
+}
+.card-body span:hover{
+    cursor: pointer;
+    color: rgb(185, 185, 185);
+}
+#sub-title{
+    margin-top: 30px;
+    color: rgb(70, 70, 70);
+}
+
 /* Try using flex, it should be compatible with table-responsive: */
