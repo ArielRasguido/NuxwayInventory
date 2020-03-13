@@ -1,6 +1,10 @@
 .table{
     margin-top: 30px;
-    
+    margin-bottom: 100px;
+    /* overflow-x:auto;
+    display:block;
+    height : 600px; */
+      
 }
 .table td{
     vertical-align: middle;

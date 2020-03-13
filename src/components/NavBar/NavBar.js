@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const NavBar = ()=>{
     return(
         <>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <Link className="navbar-brand" to="/">
                 <img id="logo-navbar" src={require('../../assets/logonuxway2.webp')} alt="logo-nuxway"/>
             </Link>

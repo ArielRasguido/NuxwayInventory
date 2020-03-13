@@ -3,22 +3,54 @@ import InventoryList from '../InventoryList/InventoryList'
 import { get, post } from '../../services';
 import GenericModal from '../Modals/GenericModal';
 import CreateProduct from '../CreateForms/CreateProduct';
+import './ProductList.css'
+import LoadingScreen from '../LoadingScreen/LoadingScreen';
 
 const ProductList=(props)=>{
 
     const [list,setList] = useState([]);
+    const [isLoading,setIsLoading] = useState(false);
+    const [active,setActive] = useState({
+        stock: true,
+        sold:false, 
+        borrowed: false, 
+        rented:false, 
+        support:false, 
+        notFound:false
+    });
+    const [path,setPath] = useState("products?status=stock");
+    const [cantPBX,setCantPBX] = useState(null);
+    const [cantExpModules,setcantExpModules] = useState(null);
+    const [cantGW,setCantGW] = useState(null);
+    const [cantHS,setCantHS] = useState(null);
+    const [cantIM,setCantIM] = useState(null);
+    const [cantIP,setCantIP] = useState(null);
+    const [cantLCD,setCantLCD] = useState(null);
+    const [cantSW,setCantSW] = useState(null);
+    const [title,setTitle] = useState("Total de Productos");
     const [modalShow, setModalShow] = React.useState(false);
 
     useEffect(()=>{
         async function getList(){
-            const products = await get("products");
+            setIsLoading(true);
+            const products = await get(path);
             console.log(products);
             setList(products.data);
             setFilterEquipment(products.data);
+            setCantPBX(products.data.filter(element => element.equipment == "IP PBX").length);
+            setcantExpModules(products.data.filter(element => element.equipment == "Exp. Module").length);
+            setCantGW(products.data.filter(element => element.equipment == "Gateway").length);
+            setCantHS(products.data.filter(element => element.equipment == "Headset").length);
+            setCantIM(products.data.filter(element => element.equipment == "Int. Module").length);
+            setCantIP(products.data.filter(element => element.equipment == "IP Phone").length);
+            setCantLCD(products.data.filter(element => element.equipment == "LCD EXP20").length);
+            setCantSW(products.data.filter(element => element.equipment == "Switch").length);
+            setIsLoading(false);
             console.log(list);
         }
         getList();
-    },[])
+
+    },[path])
     
     
     const [filterEquipment,setFilterEquipment] = useState(list);
@@ -32,69 +64,82 @@ const ProductList=(props)=>{
          
     },[idEquipment])   
 
+    function getProducts(type){
+        setPath(`products?status=${type}`);
+        setActive({[type]:true})
+    }
+
     return(
         <>
-        <div>
-        </div>
-        <div class="card">
-            <div class="card-header">
+        <div className="container">
+       <div className="row">
+                <div className="col-md-6">
+                    <h2>{props.title}</h2>
+                    <button className="btn btn-dark" id="register" onClick={()=>setModalShow(true)}>Registrar</button>
+                </div>
+                <div className="col-md-6">
+                </div>
+            </div>
+            <hr/>
+        <div className="card">
+            <div className="card-header">
                <h5> Resumen de Inventario</h5>
-               <ul class="nav nav-tabs card-header-tabs">
-               <li class="nav-item">
-               <a class="nav-link active" href="#">Stock</a>
+               <ul className="nav nav-tabs card-header-tabs">
+               <li className="nav-item">
+               <button className={active.stock? "nav-link active"  : "nav-link"} onClick={()=>getProducts("stock")}>Stock</button>
                </li>
-               <li class="nav-item">
-               <a class="nav-link" href="#">Vendidos</a>
+               <li className="nav-item">
+               <button className={ active.sold? "nav-link active"  : "nav-link "} onClick={()=>getProducts("sold")}>Vendidos</button>
                </li>
-               <li class="nav-item">
-               <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Prestados</a>
+               <li className="nav-item">
+               <button className={ active.borrowed? "nav-link active"  : "nav-link "} onClick={()=>getProducts("borrowed")}>Prestados</button>
                </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">En alquiler</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Soporte</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">No encontrados</a>
-      </li>
+                <li className="nav-item">
+                    <button className={ active.rented? "nav-link active"  : "nav-link "}  onClick={()=>getProducts("rented")}>En alquiler</button>
+                </li>
+                <li className="nav-item">
+                    <button className={ active.support? "nav-link active"  : "nav-link "}  onClick={()=>getProducts("support")}>Soporte</button>
+                </li>
+                <li className="nav-item">
+                    <button className={ active.notFound? "nav-link active"  : "nav-link "} onClick={()=>getProducts("NotFound")}>No encontrados</button>
+                </li>
     </ul>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">Total de equipos: {list.length}</h5>
+            <div className="card-body">
+                <h5 className="card-title">Total de equipos: {isLoading? "...":list.length}</h5>
                 <hr/>
                 <div className="row">
                     <div className="col-md-3">
-                        <p class="card-text">
-                            <button type="button" class="btn btn-light" onClick={()=>setidEquipment("IP PBX")}>Centrales Telefónicas:</button> 
-                        45</p>
-                        <p class="card-text">
-                            <button type="button" class="btn btn-light" onClick={()=>setidEquipment("Exp. Module")}>Modulos de Expansión:</button>
-                        23</p>
+                        <p className="card-text">
+                            <button type="button" className="btn btn-light" onClick={()=>{setidEquipment("IP PBX");setTitle("Centrales Telefonicas")}}>Centrales Telefónicas: {isLoading? "...":cantPBX}</button> 
+                        </p>
+                        <p className="card-text">
+                            <button type="button" className="btn btn-light" onClick={()=>{setidEquipment("Exp. Module");setTitle("Modulos de Expansión")}}>Modulos de Expansión: {isLoading? "...":cantExpModules}</button>
+                        </p>
                     </div>
                     <div className="col-md-3">
-                        <p class="card-text">
-                            <button type="button" class="btn btn-light" onClick={()=>setidEquipment("Gateway")}>Gateways:</button>
-                        15</p>
-                        <p class="card-text">
-                            <button type="button" class="btn btn-light" onClick={()=>setidEquipment("Headset")}>Headsets:</button> 
-                        78</p>
+                        <p className="card-text">
+                            <button type="button" className="btn btn-light" onClick={()=>{setidEquipment("Gateway");setTitle("Gateways")}}>Gateways: {isLoading? "...":cantGW}</button>
+                        </p>
+                        <p className="card-text">
+                            <button type="button" className="btn btn-light" onClick={()=>{setidEquipment("Headset");setTitle("HeadSets")}}>Headsets: {isLoading? "...":cantHS}</button> 
+                        </p>
                     </div>
                     <div className="col-md-3">
-                        <p class="card-text">
-                            <button type="button" class="btn btn-light" onClick={()=>setidEquipment("Int. Module")}>Módulos Internos:</button>
-                        56</p>
-                        <p class="card-text">
-                            <button type="button" class="btn btn-light" onClick={()=>setidEquipment("IP Phone")}>Teléfonos IP:</button>
-                        86</p>
+                        <p className="card-text">
+                            <button type="button" className="btn btn-light" onClick={()=>{setidEquipment("Int. Module");setTitle("Módulos Internos")}}>Módulos Internos: {isLoading? "...":cantIM}</button>
+                        </p>
+                        <p className="card-text">
+                            <button type="button" className="btn btn-light" onClick={()=>setidEquipment("IP Phone")}>Teléfonos IP: {isLoading? "...":cantIP}</button>
+                        </p>
                     </div>
                     <div className="col-md-3">
-                        <p class="card-text">
-                            <button type="button" class="btn btn-light" onClick={()=>setidEquipment("LCD EXP20")}>LCD Exp20:</button>
-                        11</p>
-                        <p class="card-text">
-                            <button type="button" class="btn btn-light" onClick={()=>setidEquipment("Switch")}>Switch:</button>
-                        13</p>
+                        <p className="card-text">
+                            <button  type="button" className="btn btn-light" onClick={()=>setidEquipment("LCD EXP20")}>LCD Exp20: {isLoading? "...":cantLCD}</button>
+                        </p>
+                        <p className="card-text">
+                            <button type="button" className="btn btn-light" onClick={()=>setidEquipment("Switch")}>Switch: {isLoading? "...":cantSW}</button>
+                        </p>
 
                     </div>
                 </div>
@@ -102,18 +147,19 @@ const ProductList=(props)=>{
                 
             </div>
             </div>
-           <InventoryList setModal={() => setModalShow(true)} title={props.title} >
+            {isLoading? <LoadingScreen/>:
+           <InventoryList products={true} setModal={() => setModalShow(true)} title={title} >
                 <thead className="thead-light">
                          <tr>
                             {/* <th>ID</th> */}
                             {/* <th>Equipo</th> */}
-                            <th><div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <th><div className="dropdown">
+                                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                  Modelo
                                 </button>
-                                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                       <button class="dropdown-item" type="button" >S20</button>
-                                       <button class="dropdown-item" type="button" >S50</button>
+                                     <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                       <button className="dropdown-item" type="button" >S20</button>
+                                       <button className="dropdown-item" type="button" >S50</button>
                                      </div>
                                  </div>
                             </th> 
@@ -147,6 +193,9 @@ const ProductList=(props)=>{
                          )}
                      </tbody>
            </InventoryList>
+           }
+        </div>
+ 
             <GenericModal
              show={modalShow}
              onHide={() => setModalShow(false)}

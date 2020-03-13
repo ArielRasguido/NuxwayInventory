@@ -20,6 +20,16 @@ const ClientList=(props)=>{
 
     return(
         <>
+        <div className="container">
+        <div className="row">
+                <div className="col-md-6">
+                    <h2>{props.title}</h2>
+                    <button className="btn btn-dark" id="register" onClick={()=>setModalShow(true)}>Registrar</button>
+                </div>
+                <div className="col-md-6">
+                </div>
+            </div>
+            <hr/>
            <InventoryList setModal={() => {setModalShow(true);setEdit(false)}} title={props.title}>
                 <thead className="thead-light">
                          <tr>
@@ -53,6 +63,8 @@ const ClientList=(props)=>{
                          )}
                      </tbody>
            </InventoryList>
+        </div>
+
             <GenericModal
              show={modalShow}
              onHide={() => setModalShow(false)}

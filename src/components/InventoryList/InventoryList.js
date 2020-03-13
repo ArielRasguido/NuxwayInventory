@@ -8,18 +8,14 @@ const InventoryList=(props)=>{
 
        return(
         <div className="container">
-            <div className="row">
-                <div className="col-md-6">
-                    <h2>{props.title}</h2>
-                    <button className="btn btn-dark" id="register" onClick={props.setModal}>Registrar</button>
-                </div>
-                <div className="col-md-6">
-                </div>
-            </div>
-            <hr/>
+    
+            {props.products?
+             <>
+             <h3 id="sub-title">{props.title}</h3>
+             <hr/>
+             </>:""
+            }
            
-            <h3 id="sub-title">Title</h3>
-            <hr/>
             {/* <div className="row">
                 <form className="form-inline my-2 my-lg-0">
                     <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
