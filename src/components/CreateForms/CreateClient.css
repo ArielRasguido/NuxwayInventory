@@ -1,0 +1,12 @@
+.registerform{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.registerbuttons{
+    margin: 10px;
+}
+#loading{
+    position: absolute;
+    top:35%;
+    left: 45%;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import './Login.css'
 
 const Login = ()=>{
@@ -6,7 +7,7 @@ const Login = ()=>{
         <div className="container">
             <div className="row">
                 <div className="col-md-6">
-                    <img id="imagenCompany" src={require('../../assets/images.png')} />
+                    <img id="imagenCompany" src={require('../../assets/images.png')} alt="Logo-nuxway" />
                 </div>
                 <div className="col-md-6">
                     <form id="loginForm">
@@ -19,7 +20,7 @@ const Login = ()=>{
                             <label htmlFor="password">Password</label>
                             <input type="password" className="form-control" id="password"/>
                         </div>
-                        <button type="submit" className="btn btn-warning">Enviar</button>
+                        <Link type="submit" className="btn btn-warning" to="/home">Enviar</Link>
                     </form>
                 </div>
             </div>
