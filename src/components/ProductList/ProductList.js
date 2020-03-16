@@ -39,10 +39,13 @@ const ProductList=(props)=>{
             const products = await get(path);
             console.log(products);
             var lista=[];
+            var listaBrand=[];
             products.data.map((elem,index)=>{
                  lista.push(elem.model);
+                 listaBrand.push(elem.brand);
             })
             setModelList([...new Set(lista)]);
+            setBrandList([...new Set(listaBrand)]);
             setListBackup(products.data);
             setList(products.data);
             setFilterEquipment(products.data);
@@ -71,11 +74,14 @@ const ProductList=(props)=>{
             setListBackup(list.filter((Equipo) => Equipo.equipment == idEquipment ));
             console.log(listBackup);
             var lista=[];
+            var listaBrand=[];
             list.filter((Equipo) => Equipo.equipment == idEquipment ).map((elem,index)=>{
                  lista.push(elem.model);
+                 listaBrand.push(elem.brand);
             })
             console.log()
             setModelList([...new Set(lista)]);
+            setBrandList([...new Set(listaBrand)]);
          }
          
     },[idEquipment])   
@@ -92,6 +98,16 @@ const ProductList=(props)=>{
         }
         else{
             setFilterEquipment(listBackup.filter((e)=>e.model===type));
+        }
+         
+    }
+    function filtrarMarca(type){
+
+        if(type==="todos"){
+            setFilterEquipment(listBackup);
+        }
+        else{   
+            setFilterEquipment(listBackup.filter((e)=>e.brand===type));
         }
          
     }
@@ -196,7 +212,21 @@ const ProductList=(props)=>{
                                  </div>
                             </th> 
                            
-                            <th>Marca</th> 
+                            <th><div className="dropdown">
+                                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                 Marca
+                                </button>
+                                     <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                     <button className="dropdown-item" type="button" onClick={()=>filtrarMarca('todos')} >Todos</button>
+                                        {brandList.map((brand)=>
+                                            <button className="dropdown-item" type="button" onClick={()=>filtrarMarca(brand)} >{brand}</button>
+                                        )}
+                                     
+                                       {/* <button className="dropdown-item" type="button" onClick={()=>filtrar('TG100')} >TG100</button>
+                                       <button className="dropdown-item" type="button" onClick={()=>filtrar('TG200')} >TG200</button> */}
+                                     </div>
+                                 </div>
+                            </th>
                             <th>Numero de serial</th>
                             
                             <th>Ingreso</th>
