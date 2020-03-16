@@ -78,12 +78,12 @@ const Create=(props)=>{
                         </div>
                     )
                 })}
-                    <div id="loading">{isLoading? 
-                    
-                    <div class="spinner-border text-warning" role="status">
-                            <span class="sr-only">Loading...</span>
-                          </div>:""}
-                    </div>
+                        <div id="loading">{isLoading? 
+                        
+                        <div class="spinner-border text-warning" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>:""}
+                        </div>
                     <div className="form-group row">
                         <button className="btn btn-warning registerbuttons" type="submit">
                             {enroll?"Registrando...":"Registrar"}</button>

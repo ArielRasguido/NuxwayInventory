@@ -9,6 +9,9 @@ import LoadingScreen from '../LoadingScreen/LoadingScreen';
 const ProductList=(props)=>{
 
     const [list,setList] = useState([]);
+    const [modelList,setModelList] = useState([]);
+    const [brandList,setBrandList] = useState([]);
+    const [listBackup,setListBackup] = useState([]);
     const [isLoading,setIsLoading] = useState(false);
     const [active,setActive] = useState({
         stock: true,
@@ -35,6 +38,12 @@ const ProductList=(props)=>{
             setIsLoading(true);
             const products = await get(path);
             console.log(products);
+            var lista=[];
+            products.data.map((elem,index)=>{
+                 lista.push(elem.model);
+            })
+            setModelList([...new Set(lista)]);
+            setListBackup(products.data);
             setList(products.data);
             setFilterEquipment(products.data);
             setCantPBX(products.data.filter(element => element.equipment == "IP PBX").length);
@@ -59,7 +68,14 @@ const ProductList=(props)=>{
     useEffect(()=>{
         if(idEquipment!=""){
             setFilterEquipment( list.filter((Equipo) => Equipo.equipment == idEquipment ));
-            
+            setListBackup(list.filter((Equipo) => Equipo.equipment == idEquipment ));
+            console.log(listBackup);
+            var lista=[];
+            list.filter((Equipo) => Equipo.equipment == idEquipment ).map((elem,index)=>{
+                 lista.push(elem.model);
+            })
+            console.log()
+            setModelList([...new Set(lista)]);
          }
          
     },[idEquipment])   
@@ -67,6 +83,17 @@ const ProductList=(props)=>{
     function getProducts(type){
         setPath(`products?status=${type}`);
         setActive({[type]:true})
+    }
+
+    function filtrar(type){
+
+        if(type==="todos"){
+            setFilterEquipment(listBackup);
+        }
+        else{
+            setFilterEquipment(listBackup.filter((e)=>e.model===type));
+        }
+         
     }
 
     return(
@@ -154,12 +181,17 @@ const ProductList=(props)=>{
                             {/* <th>ID</th> */}
                             {/* <th>Equipo</th> */}
                             <th><div className="dropdown">
-                                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                                  Modelo
                                 </button>
                                      <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                       <button className="dropdown-item" type="button" >S20</button>
-                                       <button className="dropdown-item" type="button" >S50</button>
+                                     <button className="dropdown-item" type="button" onClick={()=>filtrar('todos')} >Todos</button>
+                                        {modelList.map((model)=>
+                                            <button className="dropdown-item" type="button" onClick={()=>filtrar(model)} >{model}</button>
+                                        )}
+                                     
+                                       {/* <button className="dropdown-item" type="button" onClick={()=>filtrar('TG100')} >TG100</button>
+                                       <button className="dropdown-item" type="button" onClick={()=>filtrar('TG200')} >TG200</button> */}
                                      </div>
                                  </div>
                             </th> 
