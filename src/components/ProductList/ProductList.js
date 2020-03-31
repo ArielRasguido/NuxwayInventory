@@ -197,9 +197,9 @@ const ProductList=(props)=>{
                             {/* <th>ID</th> */}
                             {/* <th>Equipo</th> */}
                             <th><div className="dropdown">
-                                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                <a className="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                                  Modelo
-                                </button>
+                                </a>
                                      <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
                                      <button className="dropdown-item" type="button" onClick={()=>filtrar('todos')} >Todos</button>
                                         {modelList.map((model)=>
@@ -213,9 +213,9 @@ const ProductList=(props)=>{
                             </th> 
                            
                             <th><div className="dropdown">
-                                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                <a className="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                                  Marca
-                                </button>
+                                </a>
                                      <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
                                      <button className="dropdown-item" type="button" onClick={()=>filtrarMarca('todos')} >Todos</button>
                                         {brandList.map((brand)=>

@@ -4,7 +4,8 @@
 
 #home-title{
     text-transform: uppercase;
-    color: rgb(255, 208, 0);
+    color: #f39700;
+    font-size: 5vw;
 }
 h3{
     text-transform: capitalize;
@@ -27,6 +28,10 @@ img{
 #subviewButton{
     width: 150px;
     border-radius: 500px !important;
+    background-color: #f39700;
+}
+#subview h3{
+    color:#444444;
 }
 
 @media(max-width:769px){

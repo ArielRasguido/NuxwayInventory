@@ -3,16 +3,20 @@ import InventoryList from '../InventoryList/InventoryList'
 import { get } from '../../services';
 import GenericModal from '../Modals/GenericModal';
 import CreateClient from '../CreateForms/CreateClient';
+import LoadingScreen from '../LoadingScreen/LoadingScreen';
 
 const ClientList=(props)=>{
     const [selectedUSer,setSelectedUSer] = useState('');
     const [list,setList] = useState([]);
     const [edit,setEdit] = useState(false);
+    const [isLoading,setIsLoading] = useState(false);
     const [modalShow, setModalShow] = React.useState(false);
 
     useEffect(()=>{
         async function getList(){
+            setIsLoading(true);
             const clients = await get("customers");
+            setIsLoading(false);
             setList(clients.data);
         }
         getList();
@@ -24,13 +28,13 @@ const ClientList=(props)=>{
         <div className="row">
                 <div className="col-md-6">
                     <h2>{props.title}</h2>
-                    <button className="btn btn-dark" id="register" onClick={()=>setModalShow(true)}>Registrar</button>
+                    <button className="btn btn-dark" id="register" onClick={()=>{setModalShow(true);setEdit(false)}}>Registrar</button>
                 </div>
                 <div className="col-md-6">
                 </div>
             </div>
             <hr/>
-           <InventoryList setModal={() => {setModalShow(true);setEdit(false)}} title={props.title}>
+            {isLoading? <LoadingScreen/>:  <InventoryList setModal={() => {setModalShow(true);setEdit(false)}} title={props.title}>
                 <thead className="thead-light">
                          <tr>
                          <th>Editar</th>
@@ -62,7 +66,8 @@ const ClientList=(props)=>{
                          </tr>
                          )}
                      </tbody>
-           </InventoryList>
+           </InventoryList>}
+         
         </div>
 
             <GenericModal
