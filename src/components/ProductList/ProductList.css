@@ -1,3 +1,21 @@
 .card-header button{
     background-color: transparent;
 }
+
+#SummaryReport{
+    background-color: #f7980a;
+    color: #414141;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+#SummaryReport button{
+    color: wheat;
+}
+#SummaryReport button.active{
+    color: rgb(34, 34, 34);
+}
+
+.empty{
+    color: rgb(255, 102, 0);
+    
+}

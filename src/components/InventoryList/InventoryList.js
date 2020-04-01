@@ -1,8 +1,5 @@
-import React, { useState,useEffect } from 'react'
+import React from 'react'
 import './InventoryList.css'
-import { get, post } from '../../services';
-import GenericModal from '../Modals/GenericModal';
-import CreateClient from '../CreateForms/CreateClient';
 
 const InventoryList=(props)=>{
 
@@ -22,7 +19,7 @@ const InventoryList=(props)=>{
                     <button className="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div> */}
-            <div className="row">
+            <div style={{overflowX:"auto"}}>
                 <table className="table">
                     {props.children}
                 </table>

@@ -6,7 +6,7 @@ function GenericModal(props) {
     return (
       <Modal
         {...props}
-        size="md"
+        size={props.size?props.size:"md"}
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
