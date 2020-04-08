@@ -23,6 +23,7 @@ const ClientList=(props)=>{
             const clients = await get("customers");
             setIsLoading(false);
             setList(clients.data);
+            console.log(clients.data);
         }
         getList();
     },[refresh]) 

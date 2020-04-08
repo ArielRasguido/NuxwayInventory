@@ -9,6 +9,7 @@ import LoadingScreen from '../LoadingScreen/LoadingScreen';
 const ProductList=(props)=>{
 
     const [list,setList] = useState([]);
+    const [clients,setClients] = useState([]);
     const [refresh,setRefresh] = useState(false);
     const [modelList,setModelList] = useState([]);
     const [brandList,setBrandList] = useState([]);
@@ -40,6 +41,9 @@ const ProductList=(props)=>{
         async function getList(){
             setIsLoading(true);
             const products = await get(path);
+            const clients = await get("customers");
+            console.log(clients);
+            setClients(clients);
             console.log(products);
             var lista=[];
             var listaBrand=[];
@@ -112,6 +116,13 @@ const ProductList=(props)=>{
             setFilterEquipment(listBackup.filter((e)=>e.brand===type));
         }
          
+    }
+
+    function searchClient(id)
+    {
+        var client = clients.data.filter(c=>c.id===id);
+        if(client.length!==0)
+            return(client[0].company);
     }
 
     return(
@@ -227,9 +238,11 @@ const ProductList=(props)=>{
                             <th>Numero de serial</th>
                             
                             <th>Ingreso</th>
-                            <th>Salida</th>
+                            {!active.stock?<th>Salida</th>:""}
+                            
                             {/* <th>Estado</th> */}
-                            <th>Ubicacion</th>
+                            {active.stock?<th>Ubicacion</th>:<th>Cliente</th>}
+                            
                             {/* <th>ID de cliente</th> */}
                             <th>Observaciones</th>
                       
@@ -250,9 +263,11 @@ const ProductList=(props)=>{
                              <td> {listElement.brand}</td>
                              <td> {listElement.serial_Number}</td>
                              <td> {new Date(listElement.entry_Warehouse).toLocaleDateString()}</td>
-                             <td> {new Date(listElement.out_Warehouse).toLocaleDateString()}</td>
+                             {!active.stock?<td> {new Date(listElement.out_Warehouse).toLocaleDateString()}</td>:""}
+                             
                              {/* <td> {listElement.status}</td> */}
-                             <td> {listElement.location}</td>
+                             {active.stock?<td> {listElement.location}</td>:<td> {searchClient(listElement.customer_ID)}</td>}
+                             
                              {/* <td> {listElement.customer_ID}</td> */}
                              <td> {listElement.observations}</td>
                      
@@ -268,7 +283,7 @@ const ProductList=(props)=>{
              onHide={() => setModalShow(false)}
              name={edit?"Editar Producto":"Registrar Producto"}
             >
-                <CreateProduct refresh={()=>setRefresh(!refresh)} edit={edit} data={selectedProduct} onHide={() => setModalShow(false)}/>
+                <CreateProduct refresh={()=>setRefresh(!refresh)} clients={clients} edit={edit} brandList={brandList} data={selectedProduct} onHide={() => setModalShow(false)}/>
 
             </GenericModal>
         </>

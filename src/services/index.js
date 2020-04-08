@@ -1,34 +1,38 @@
 import axios from 'axios';
+
+const baseUrl = process.env.REACT_APP_BASE_URL
+
 //-------------GET-------------------
 export async function get(controllerName) {
     try {
         const response = await axios({
-            url: `https://17c7fab6.ngrok.io/api/${controllerName}`,
+            url: baseUrl + controllerName,
             method: 'GET'
         })
-        //console.log(response)
         return response
     } catch (error) {
         console.log(error)
+        throw error;
     }
 }
 
 export async function getById(controllerName,userId) {
     try {
         const response = await axios({
-            url: `https://17c7fab6.ngrok.io/api/${controllerName}/${userId}`,
+            url: baseUrl + `${controllerName}/${userId}`,
             method: 'GET'
         })
-        //console.log(response)
         return response
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        throw error;
     }
 }
 
+//-------------POST-------------------
 export async function post(type,data) {
     try {
-        const response = await axios.post(`https://17c7fab6.ngrok.io/api/${type}`,data)
+        const response = await axios.post(baseUrl+`${type}`,data)
         console.log(response)
         return response
     } catch (error) {
@@ -38,9 +42,10 @@ export async function post(type,data) {
     }
 }
 
+//-------------PUT-------------------
 export async function put(type,data,id) {
     try {
-        const response = await axios.put(`https://17c7fab6.ngrok.io/api/${type}/${id}`,data)
+        const response = await axios.put(baseUrl+`${type}/${id}`,data)
         console.log(response)
         return response
     } catch (error) {
@@ -49,12 +54,14 @@ export async function put(type,data,id) {
     }
 }
 
+//-------------DELETE-------------------
 export async function deleteCustomer(type,id){
     try {
-        const response = await axios.delete(`https://17c7fab6.ngrok.io/api/${type}/${id}`);
+        const response = await axios.delete(baseUrl+`${type}/${id}`);
         return response;
         
     } catch (error) {
         console.log(error);
+        throw error;
     }
 }
