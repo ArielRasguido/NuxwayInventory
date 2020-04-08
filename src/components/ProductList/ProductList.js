@@ -90,7 +90,7 @@ const ProductList=(props)=>{
             setBrandList([...new Set(listaBrand)]);
          }
          
-    },[idEquipment,list,refresh])   
+    },[path,idEquipment,list,refresh])   
 
     function getProducts(type){
         setPath(`products?status=${type}`);
