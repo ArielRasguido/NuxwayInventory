@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/NuxwayInventory/static/css/main.cba0dcc0.chunk.css",
+    "main.js": "/NuxwayInventory/static/js/main.1e4289a2.chunk.js",
+    "main.js.map": "/NuxwayInventory/static/js/main.1e4289a2.chunk.js.map",
+    "runtime-main.js": "/NuxwayInventory/static/js/runtime-main.05eff1cc.js",
+    "runtime-main.js.map": "/NuxwayInventory/static/js/runtime-main.05eff1cc.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/NuxwayInventory/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.48be2b6b.chunk.js": "/NuxwayInventory/static/js/2.48be2b6b.chunk.js",
+    "static/js/2.48be2b6b.chunk.js.map": "/NuxwayInventory/static/js/2.48be2b6b.chunk.js.map",
+    "index.html": "/NuxwayInventory/index.html",
+    "precache-manifest.085f7e5c8d468861134ab44b0bffc489.js": "/NuxwayInventory/precache-manifest.085f7e5c8d468861134ab44b0bffc489.js",
+    "service-worker.js": "/NuxwayInventory/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/NuxwayInventory/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.cba0dcc0.chunk.css.map": "/NuxwayInventory/static/css/main.cba0dcc0.chunk.css.map",
+    "static/js/2.48be2b6b.chunk.js.LICENSE.txt": "/NuxwayInventory/static/js/2.48be2b6b.chunk.js.LICENSE.txt",
+    "static/media/clientes.png": "/NuxwayInventory/static/media/clientes.b4bf4147.png",
+    "static/media/delete.svg": "/NuxwayInventory/static/media/delete.650cdc57.svg",
+    "static/media/edit.svg": "/NuxwayInventory/static/media/edit.7f4f12d4.svg",
+    "static/media/logonuxway.png": "/NuxwayInventory/static/media/logonuxway.e2af00bf.png",
+    "static/media/logonuxway2.png": "/NuxwayInventory/static/media/logonuxway2.b3703b49.png",
+    "static/media/logonuxway3.png": "/NuxwayInventory/static/media/logonuxway3.97386ce9.png",
+    "static/media/productos.png": "/NuxwayInventory/static/media/productos.cb923278.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.05eff1cc.js",
+    "static/css/2.47e06e2e.chunk.css",
+    "static/js/2.48be2b6b.chunk.js",
+    "static/css/main.cba0dcc0.chunk.css",
+    "static/js/main.1e4289a2.chunk.js"
+  ]
+}
